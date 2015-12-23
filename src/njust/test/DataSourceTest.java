@@ -19,7 +19,7 @@ public class DataSourceTest {
 	@Test
 	public void getConnection() {
 		User u=new User();
-		u.setId(5);
+		u.setId(1);
 		ss.newSurvey(u);
 	}
 

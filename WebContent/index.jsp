@@ -30,7 +30,7 @@
 			<tr>
 				<td class="tdFormLabel" width="40%">E-mail:</td>
 				<td class="tdFormControl">
-					<input type="text" name="email" class="text" value="841044399@qq.com">
+					<input type="text" name="email" class="text" value="">
 					<font class="fonterror"><br><s:actionerror></s:actionerror></font>
 				</td>
 			</tr>

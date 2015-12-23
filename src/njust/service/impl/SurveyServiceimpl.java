@@ -29,7 +29,6 @@ public class SurveyServiceimpl implements SurveyService {
 	public Survey newSurvey(User user) {
 		Survey s = new Survey();
 		Page p = new Page();
-		//ÉèÖÃ¹ØÁª
 		s.setUser(user);
 		p.setSurvey(s);
 		s.getPages().add(p);
