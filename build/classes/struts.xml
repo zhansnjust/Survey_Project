@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 主题 -->
+	<constant name="struts.ui.theme" value="simple" />
+	<!-- 开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	
+	<package name="surveyparkPkg" extends="struts-default" namespace="/">
+		<!-- regAction -->
+		<action name="RegAction_*" class="regAction" method="{1}">
+			<result name="regPage">/reg.jsp</result>
+			<result name="input">/reg.jsp</result>
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="LoginAction_*" class="loginAction" method="{1}">
+			<result name="success">/index.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		
+		<action name="SurveyAction_*" class="surveyAction" method="{1}">
+			<result name="mySurveyList">/mySurveyList.jsp</result>
+			<result name="desigSurvey">/designSurvey.jsp</result>
+		</action>
+	</package>
+</struts>

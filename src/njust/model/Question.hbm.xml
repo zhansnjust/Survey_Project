@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-10-11 11:48:46 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="njust.model.Question" table="question">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+        <property name="questionType" type="int">
+            <column name="QUESTIONTYPE" />
+        </property>
+        <property name="title" type="java.lang.String">
+            <column name="TITLE" />
+        </property>
+        <property name="options" type="java.lang.String">
+            <column name="OPTIONS" />
+        </property>
+        <property name="other" type="boolean">
+            <column name="OTHER" />
+        </property>
+        <property name="otherStyle" type="int">
+            <column name="OTHERSTYLE" />
+        </property>
+        <property name="otherSelectOptions" type="java.lang.String">
+            <column name="OTHERSELECTOPTIONS" />
+        </property>
+        <property name="matrixRowTitles" type="java.lang.String">
+            <column name="MATRIXROWTITLES" />
+        </property>
+        <property name="matrixColTitles" type="java.lang.String">
+            <column name="MATRIXCOLTITLES" />
+        </property>
+        <property name="matrixSelectOptions" type="java.lang.String">
+            <column name="MATRIXSELECTOPTIONS" />
+        </property>
+        <many-to-one name="page" class="njust.model.Page" >
+            <column name="page_id" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
