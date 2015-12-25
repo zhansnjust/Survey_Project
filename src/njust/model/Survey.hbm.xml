@@ -29,7 +29,7 @@
         <many-to-one name="user" class="njust.model.User" >
             <column name="user_id" />
         </many-to-one>
-        <set name="pages" table="page" inverse="true" >
+        <set name="pages" table="page" inverse="true" order-by="id" >
             <key>
                 <column name="survey_id" />
             </key>

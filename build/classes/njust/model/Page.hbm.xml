@@ -19,7 +19,7 @@
             <column name="survey_id" />
         </many-to-one>
         <!-- 页面到问题 1-n -->
-        <set name="questions" table="question" inverse="true">
+        <set name="questions" table="question" inverse="true" order-by="id">
             <key>
                 <column name="page_id" />
             </key>

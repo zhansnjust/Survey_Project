@@ -3,18 +3,15 @@ package njust.model;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Ò³ÃæÀà
- */
 public class Page {
 	private Integer id;
-	private String title = "Î´ÃüÃû";
+	private String title = "æœªå‘½å";
 	private String description;
 
-	//¼òÀú´ÓPageµ½SurveyÖ®¼ä¶à¶ÔÒ»¹ØÁª¹ØÏµ
+	//ç®€å†ä»Pageåˆ°Surveyä¹‹é—´å¤šå¯¹ä¸€å…³è”å…³ç³»
 	private Survey survey;
 
-	//¼òÀú´ÓPageµ½QuestionÖ®¼äÒ»¶Ô¶à¹ØÁª¹ØÏµ
+	//ç®€å†ä»Pageåˆ°Questionä¹‹é—´ä¸€å¯¹å¤šå…³è”å…³ç³»
 	private Set<Question> questions = new HashSet<>();
 
 	public Integer getId() {

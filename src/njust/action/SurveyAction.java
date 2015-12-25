@@ -21,6 +21,7 @@ public class SurveyAction extends BaseAction<Survey>implements UserAware{
 	private SurveyService surveyService;
 	private List<Survey> mySurveys;
 	private User user;
+	private Integer sid;
 	public String mySurveys()
 	{
 		this.mySurveys=surveyService.findSurveys(user);
@@ -31,7 +32,28 @@ public class SurveyAction extends BaseAction<Survey>implements UserAware{
 		model=surveyService.newSurvey(user);
 		return "desigSurvey";
 	}
+	/**
+	 * 设计调查
+	 * @return
+	 */
+	public String designSurvey()
+	{
+		this.model = surveyService.getSurveyWithChildren(sid);
+		return "desigSurvey";
+	}
 	
+	public String editSurvey()
+	{
+		this.model=surveyService.getSrvey(sid);
+		return "editSurvey";
+	}
+	public String updateSurvey()
+	{
+		this.sid=model.getId();
+		model.setUser(user);
+		surveyService.updateSurvey(model);
+		return "designSurveyAction";
+	}
 	
 	public List<Survey> getMySurveys() {
 		return mySurveys;
@@ -43,6 +65,12 @@ public class SurveyAction extends BaseAction<Survey>implements UserAware{
 	@Override
 	public void setUser(User user) {
 		this.user=user;
+	}
+	public Integer getSid() {
+		return sid;
+	}
+	public void setSid(Integer sid) {
+		this.sid = sid;
 	}
 	
 }

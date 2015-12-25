@@ -13,6 +13,7 @@ public abstract class BaseAction<T> extends ActionSupport implements
 
 	private static final long serialVersionUID = 9180917383072055589L;
 	public T model;
+	protected String result;
 
 	@SuppressWarnings("unchecked")
 	public BaseAction() {
@@ -32,4 +33,13 @@ public abstract class BaseAction<T> extends ActionSupport implements
 	public T getModel() {
 		return model;
 	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+	
 }
