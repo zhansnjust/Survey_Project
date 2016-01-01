@@ -20,7 +20,7 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
-<!--  不建议使用这个过滤器，高并发的时候效率低
+	<!-- 
 <filter>  
     <filter-name>openSessionInViewFilter</filter-name>  
     <filter-class>  

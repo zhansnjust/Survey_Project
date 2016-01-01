@@ -1,5 +1,6 @@
 package njust.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -7,7 +8,8 @@ import java.util.Set;
 /**
  * 调查类
  */
-public class Survey {
+public class Survey implements Serializable{
+	private static final long serialVersionUID = 3824732860490012656L;
 	private Integer id;
 	private String title = "未命名";
 	private String preText = "上一步";
@@ -15,7 +17,28 @@ public class Survey {
 	private String exitText = "退出";
 	private String doneText = "完成";
 	private Date createTime = new Date();
+	//是否关闭
+	private boolean closed ;
 	
+	//logo路径
+	private String logoPhotoPath ;
+	
+	public String getLogoPhotoPath() {
+		return logoPhotoPath;
+	}
+
+	public void setLogoPhotoPath(String logoPhotoPath) {
+		this.logoPhotoPath = logoPhotoPath;
+	}
+
+	public boolean isClosed() {
+		return closed;
+	}
+
+	public void setClosed(boolean closed) {
+		this.closed = closed;
+	}
+
 	//建立从Survey到User之间多对一关联关系
 	private User user ;
 	

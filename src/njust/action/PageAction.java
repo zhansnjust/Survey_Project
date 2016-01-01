@@ -19,7 +19,7 @@ public class PageAction  extends BaseAction<Page>{
 	private SurveyService surveyService;
 	public String toAddPage()
 	{
-		this.model=surveyService.getPage(pid);
+		this.model=surveyService.getPage(sid);
 		result="editPage.jsp";
 		return "success";
 	}

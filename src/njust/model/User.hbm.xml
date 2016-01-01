@@ -1,26 +1,15 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2015-10-11 11:48:46 by Hibernate Tools 3.4.0.CR1 -->
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="njust.model.User" table="users">
-        <id name="id" type="java.lang.Integer">
-            <column name="id" />
-            <generator class="identity" />
-        </id>
-        <property name="email" type="java.lang.String" length="50">
-            <column name="EMAIL" />
-        </property>
-        <property name="name" type="java.lang.String" length="50">
-            <column name="NAME" />
-        </property>
-        <property name="password" type="java.lang.String" length="50">
-            <column name="PASSWORD" />
-        </property>
-        <property name="nickName" type="java.lang.String" length="50">
-            <column name="NICKNAME" />
-        </property>
-        <property name="regDate"  column="regDate" type="timestamp" update="false">
-        </property>
-    </class>
+	<class name="njust.model.User" table="users">
+		<id name="id" column="id" type="integer">
+			<generator class="identity" />
+		</id>
+		<property name="email" column="email" type="string" length="50" />
+		<property name="password" column="password" type="string" length="50" />
+		<property name="nickName" column="nickname" type="string" length="50" />
+		<property name="regDate" column="regdate" type="timestamp"  update="false"/>
+	</class>
 </hibernate-mapping>

@@ -49,11 +49,6 @@
 			<result name="mySurveyList">/mySurveyList.jsp</result>
 			<result name="desigSurvey">/designSurvey.jsp</result>
 			<result name="editSurvey">/editSurvey.jsp</result>
-			<result name="designSurveyAction" type="redirectAction">
-				<param name="namespace">/</param>
-				<param name="actionName">SurveyAction_designSurvey</param>
-				<param name="sid">${sid}</param>
-			</result>
 		</action>
 		
 		<action name="PageAction_*" class="pageAction" method="{1}">

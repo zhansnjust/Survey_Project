@@ -11,7 +11,7 @@ import org.hibernate.SessionFactory;
 import njust.dao.BaseDao;
 @SuppressWarnings("unchecked")
 public abstract class BaseDaoImp<T> implements BaseDao<T> {
-	//×¢Èë
+	//×¢ï¿½ï¿½
 	@Resource
 	private  SessionFactory sf;
 	private Class<T> clazz;

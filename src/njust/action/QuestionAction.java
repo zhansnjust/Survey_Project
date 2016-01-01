@@ -15,6 +15,7 @@ public class QuestionAction extends BaseAction<Question> {
 
 	private static final long serialVersionUID = -7940590825700062942L;
 	private Integer pid;
+	private Integer sid;
 	@Resource
 	private SurveyService surveyService;
 	public String toSelectQuestionType()
@@ -36,12 +37,24 @@ public class QuestionAction extends BaseAction<Question> {
 		surveyService.saveOrUpdateQuestion(model);
 		return "designSurveyAction";
 	}
+	public String editQuestion()
+	{
+		
+		result="selectQuestionType.jsp";
+		return "success";
+	}
 	
 	public Integer getPid() {
 		return pid;
 	}
 	public void setPid(Integer pid) {
 		this.pid = pid;
+	}
+	public Integer getSid() {
+		return sid;
+	}
+	public void setSid(Integer sid) {
+		this.sid = sid;
 	}
 	
 }
