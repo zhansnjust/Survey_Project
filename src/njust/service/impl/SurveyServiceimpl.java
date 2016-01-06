@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import njust.dao.BaseDao;
+import njust.model.Answer;
 import njust.model.Page;
 import njust.model.Question;
 import njust.model.Survey;
@@ -21,6 +22,8 @@ public class SurveyServiceimpl implements SurveyService {
 	private BaseDao<Page> pageDao;
 	@Resource(name = "questionDao")
 	private BaseDao<Question> questionDao;
+	@Resource
+	private BaseDao<Answer> answerDao;
 	@Override
 	public List<Survey> findSurveys(User user) {
 		String hql = "from Survey s where s.user.id=?";
@@ -70,6 +73,44 @@ public class SurveyServiceimpl implements SurveyService {
 	@Override
 	public void saveOrUpdateQuestion(Question model) {
 		questionDao.saveOrUpdateEntity(model);
+	}
+
+	@Override
+	public void deleteQuestion(Integer qid) {
+		String hql="delete from Answer a where a.questionId=?";
+		answerDao.batchEntityByHql(hql, qid);
+		hql="delete from Question q where q.id=?";
+		questionDao.batchEntityByHql(hql, qid);
+	}
+
+	@Override
+	public void deletePage(Integer pid) {
+		String hql="delete from  Answer a where a.questionId in (select q.id from Question q where q.page.id=?)";
+		answerDao.batchEntityByHql(hql, pid);
+		hql="delete from Question q where q.page.id=?";
+		questionDao.batchEntityByHql(hql, pid);
+		hql="delete from Page p where p.id=? ";
+		pageDao.batchEntityByHql(hql, pid);
+	}
+
+	@Override
+	public void deleteSurvey(Integer sid) {
+		//hibernate 在写操作的时候不许两级以上链接， 读可以
+		String hql="delete from Answer a where a.surveyId=?";
+		answerDao.batchEntityByHql(hql, sid);
+		//hibernate 在写操作的时候不许两级以上链接， 读可以
+		hql="delete from Question q where q.page.id in (select p.id from Page p where p.survey.id = ?)";
+		questionDao.batchEntityByHql(hql, sid);
+		hql="delete from Page p where p.survey.id=?";
+		pageDao.batchEntityByHql(hql, sid);
+		hql="delete from Survey s where s.id=?";
+		surveyDao.batchEntityByHql(hql, sid);
+	}
+
+	@Override
+	public Question getQuestion(Integer qid) {
+
+		return questionDao.getEntity(qid);
 	}
 
 }

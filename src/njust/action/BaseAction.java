@@ -28,6 +28,7 @@ public abstract class BaseAction<T> extends ActionSupport implements
 	}
 
 	public void prepare() throws Exception {
+		System.out.println("prepare is excute");
 	}
 	@Override
 	public T getModel() {

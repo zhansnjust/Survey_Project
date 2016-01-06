@@ -37,7 +37,11 @@ public class PageAction  extends BaseAction<Page>{
 		result="editPage.jsp";
 		return "success";
 	}
-	
+	public String deletePage()
+	{
+		surveyService.deletePage(pid);
+		return "designSurveyAction";
+	}
 	public Integer getSid() {
 		return sid;
 	}

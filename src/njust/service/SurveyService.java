@@ -17,4 +17,20 @@ public interface SurveyService {
 	void saveOrUpdatePage(Page model);
 	Page getPage(Integer pid);
 	void saveOrUpdateQuestion(Question model);
+	/**
+	 * 删问题的同事删除答案
+	 * @param qid
+	 */
+	void deleteQuestion(Integer qid);
+	/**
+	 * 删除页面， 同时删除问题和答案
+	 * @param pid
+	 */
+	void deletePage(Integer pid);
+	/**
+	 * 下面的都要删除
+	 * @param sid
+	 */
+	void deleteSurvey(Integer sid);
+	Question getQuestion(Integer qid);
 }

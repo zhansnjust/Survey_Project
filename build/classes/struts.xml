@@ -17,6 +17,8 @@
 				<interceptor-ref name="loginInterceptor" />
 				<interceptor-ref name="defaultStack">
 					<param name="modelDriven.refreshModelBeforeResult">true</param>
+					<!-- 如果下面一个参数不设为false ，则prepareAble接口的prepare方法每次都执行 -->
+					<param name="prepare.alwaysInvokePrepare">flase</param>
 				</interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
@@ -49,6 +51,10 @@
 			<result name="mySurveyList">/mySurveyList.jsp</result>
 			<result name="desigSurvey">/designSurvey.jsp</result>
 			<result name="editSurvey">/editSurvey.jsp</result>
+			<result name="findMySurveyAction" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">mySurveys</param>
+			</result>
 		</action>
 		
 		<action name="PageAction_*" class="pageAction" method="{1}">

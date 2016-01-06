@@ -54,7 +54,11 @@ public class SurveyAction extends BaseAction<Survey>implements UserAware{
 		surveyService.updateSurvey(model);
 		return "designSurveyAction";
 	}
-	
+	public String deleteSurvey()
+	{
+		surveyService.deleteSurvey(sid);
+		return "findMySurveyAction";
+	}
 	public List<Survey> getMySurveys() {
 		return mySurveys;
 	}
