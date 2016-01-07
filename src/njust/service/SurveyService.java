@@ -33,4 +33,7 @@ public interface SurveyService {
 	 */
 	void deleteSurvey(Integer sid);
 	Question getQuestion(Integer qid);
+	void deleteAnswer(Integer sid);
+	void toogleStatus(Integer sid);
+	void updateLogoPhotoPath(Integer sid, String string);
 }
