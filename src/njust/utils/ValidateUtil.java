@@ -3,12 +3,11 @@ package njust.utils;
 import java.util.Collection;
 
 /**
- * 校验工具类
  */
 public class ValidateUtil {
 	
 	/**
-	 * 判断字符串有效性
+	 * 瀛楃鏄惁涓虹┖
 	 */
 	public static boolean isValid(String src){
 		if(src == null || "".equals(src.trim())){
@@ -18,12 +17,18 @@ public class ValidateUtil {
 	}
 	
 	/**
-	 * 判断集合的有效性 
+	 * 闆嗗悎鏄惁涓虹┖
 	 */
 	public static boolean isValid(Collection<?> col){
 		if(col == null || col.isEmpty()){			
 			return false ;
 		}
 		return true ;
+	}
+
+	public static boolean isValid(Object[] paramType) {
+		if(paramType==null||paramType.length==0)
+			return false;
+		return true;
 	}
 }

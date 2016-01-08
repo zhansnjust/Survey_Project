@@ -11,5 +11,10 @@
 		<property name="password" column="password" type="string" length="50" />
 		<property name="nickName" column="nickname" type="string" length="50" />
 		<property name="regDate" column="regdate" type="timestamp"  update="false"/>
+		<!-- 映射User到Role之间多对多单向关联关系 -->
+		<set name="roles" table="user_role_link">
+			<key column="userid" />
+			<many-to-many class="njust.model.Role" column="roleid" />
+		</set>
 	</class>
 </hibernate-mapping>

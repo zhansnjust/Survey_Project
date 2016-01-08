@@ -70,5 +70,12 @@ public abstract class BaseDaoImp<T> implements BaseDao<T> {
 		}
 		return query.list();
 	}
-	
+	@Override
+	public Object uniqueResult(String hql, Object[] objects) {
+		Query q = sf.getCurrentSession().createQuery(hql);
+		for(int i = 0 ; i < objects.length ; i ++){
+			q.setParameter(i, objects[i]);
+		}
+		return q.uniqueResult();
+	}
 }

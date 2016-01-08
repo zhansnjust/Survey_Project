@@ -1,6 +1,8 @@
 package njust.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 用户类
@@ -13,6 +15,7 @@ public class User {
 	private String nickName;
 	//注册时间
 	private Date regDate = new Date();
+	private Set<Role> roles = new HashSet<Role>();
 
 	public Integer getId() {
 		return id;
@@ -64,6 +67,14 @@ public class User {
 
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 }
