@@ -1,6 +1,7 @@
 package njust.service;
 
 import java.util.List;
+import java.util.Set;
 
 import njust.model.Right;
 
@@ -21,5 +22,8 @@ public interface RightService extends BaseService<Right> {
 
 	
 	public List<Right> findRightsInRange(Integer[] ids);
+
+
+	public List<Right> findRightsNotInRange(Set<Right> rights);
 	
 }

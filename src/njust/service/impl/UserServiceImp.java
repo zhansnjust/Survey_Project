@@ -33,4 +33,16 @@ public class UserServiceImp extends BaseServiceImp<User> implements UserService 
 			List<User> list=this.findEntityByHQL(hql, email,md5);
 		return  ValidateUtil.isValid(list)?list.get(0):null;
 	}
+
+	@Override
+	public void clearAuthorize(Integer userId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateAuthorize(User model, Integer[] ownRoleIds) {
+		// TODO Auto-generated method stub
+		
+	}
 }

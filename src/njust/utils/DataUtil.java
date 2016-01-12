@@ -1,12 +1,15 @@
 package njust.utils;
 import java.security.MessageDigest;
+import java.util.Set;
+
+import njust.model.BaseEntity;
 
 /**
- * Êı¾İ
+ * ï¿½ï¿½ï¿½ï¿½
  */
 public class DataUtil {
 	/**
-	 * Ê¹ÓÃmd5Ëã·¨½øĞĞ¼ÓÃÜ 
+	 * Ê¹ï¿½ï¿½md5ï¿½ã·¨ï¿½ï¿½ï¿½Ğ¼ï¿½ï¿½ï¿½ 
 	 */
 	public static String md5(String src){
 		try {
@@ -24,5 +27,18 @@ public class DataUtil {
 			e.printStackTrace();
 		}
 		return null ;
+	}
+	/**
+	 * æŠ½å–å®ä½“çš„id,å½¢æˆå­—ç¬¦ä¸²
+	 */
+	public static String extractRightIds(Set<? extends BaseEntity> entites){
+		String temp = "" ;
+		if(ValidateUtil.isValid(entites)){
+			for(BaseEntity e: entites){
+				temp = temp + e.getId() + "," ;
+			}
+			return temp.substring(0,temp.length() - 1);
+		}
+		return temp ;
 	}
 }

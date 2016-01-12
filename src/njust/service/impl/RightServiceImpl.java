@@ -1,11 +1,14 @@
 package njust.service.impl;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
 import njust.dao.BaseDao;
 import njust.model.Right;
 import njust.service.RightService;
+import njust.utils.StringUtil;
+import njust.utils.ValidateUtil;
 
 import org.springframework.stereotype.Service;
 @Service("rightService")
@@ -86,14 +89,39 @@ public class RightServiceImpl extends  BaseServiceImp<Right> implements RightSer
 
 	@Override
 	public void batchUpdateRights(List<Right> allRights) {
-		// TODO Auto-generated method stub
+		String hql="update Right r set r.rightName = ? where r.id = ?";
+		if(ValidateUtil.isValid(allRights))
+		{
+			for(Right right:allRights)
+				this.batchEntityByHql(hql, right.getRightName(),right.getId());
+		}
 		
 	}
 
 	@Override
 	public List<Right> findRightsInRange(Integer[] ids) {
-		// TODO Auto-generated method stub
+		if(ValidateUtil.isValid(ids))
+		{
+			String hql="from Right r where  r.id in ("+StringUtil.arr2Str(ids)+")";
+			return this.findEntityByHQL(hql);
+		}
 		return null;
 	}
-	
+	@Override
+	public List<Right> findRightsNotInRange(Set<Right> rights) {
+		if(!ValidateUtil.isValid(rights))
+			return this.findAllEntities();
+		else
+		{
+			String hql="from Right r where r.id not in ("+extractRightIds(rights) +")";
+			return this.findEntityByHQL(hql);
+		}
+	}
+	private String extractRightIds(Set<Right> rights)
+	{
+		StringBuffer sb=new StringBuffer();
+		for(Right r:rights)
+			sb.append(r.getId()).append(",");
+		return sb.substring(0,sb.length()-1).toString();
+	}
 }

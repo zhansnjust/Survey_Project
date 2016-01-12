@@ -10,7 +10,7 @@ import njust.service.RightService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-//提取所有权限的工具类
+//提取所有权限的工具类.这是第一种方法，通常我们用拦截器捕获url
 public class ExtractAllRightUtils {
 	public static void main(String[] args) throws URISyntaxException, ClassNotFoundException {
 		ClassLoader cl=ExtractAllRightUtils.class.getClassLoader();

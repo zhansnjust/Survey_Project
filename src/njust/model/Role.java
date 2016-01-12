@@ -5,7 +5,11 @@ import java.util.Set;
 
 /**
  */
-public class Role {
+public class Role extends BaseEntity{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5342196668094310995L;
 	private Integer id;
 	private String roleName;
 	private String roleValue;
