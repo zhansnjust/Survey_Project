@@ -17,12 +17,14 @@ public abstract class BaseEntity implements Serializable{
 	public String toString() {
 		try {
 			StringBuffer buffer = new StringBuffer();
+			@SuppressWarnings("rawtypes")
 			Class clazz = this.getClass();
 			String simpleName = clazz.getSimpleName();
 			buffer.append(simpleName);
 			buffer.append("{");
 			//
 			Field[] fs = clazz.getDeclaredFields();
+			@SuppressWarnings("rawtypes")
 			Class ftype = null ;
 			String fname = null ;
 			Object fvalue = null ;

@@ -11,7 +11,7 @@
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 	
 	<!-- 扫描包 -->
-	<context:component-scan base-package="njust.dao.impl,njust.service.impl,njust.action"/>
+	<context:component-scan base-package="njust.dao.impl,njust.service.impl,njust.action,njust.listener"/>
 	
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">

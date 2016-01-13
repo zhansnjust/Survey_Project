@@ -1,15 +1,12 @@
 package njust.intercetor;
-
+import org.apache.struts2.ServletActionContext;
 import njust.action.BaseAction;
-import njust.action.LoginAction;
-import njust.action.RegAction;
-import njust.action.UserAware;
-import njust.model.User;
-
+import njust.utils.ValidateUtil;
 import com.opensymphony.xwork2.ActionInvocation;
+import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 
-public class LoginIntercetor implements Interceptor {
+public class RightFilterIntercetor implements Interceptor{
 
 	/**
 	 * 
@@ -28,24 +25,17 @@ public class LoginIntercetor implements Interceptor {
 
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public String intercept(ActionInvocation arg0) throws Exception {
-		@SuppressWarnings("rawtypes")
 		BaseAction action = (BaseAction) arg0.getAction();
-		if ((action instanceof LoginAction) || (action instanceof RegAction))
+		ActionProxy proxy = arg0.getProxy();
+		String ns = proxy.getNamespace();
+		String actionName = proxy.getActionName();
+		if(ValidateUtil.hasRight(ns, actionName, ServletActionContext.getRequest(),action)){
 			return arg0.invoke();
-		else {
-			User u = (User) arg0.getInvocationContext().getSession().get("user");
-			if(null==u)
-				return "login";
-			else
-			{
-				if(action instanceof UserAware)
-					((UserAware)action).setUser(u);
-				return arg0.invoke();
-			}
 		}
-
+		return "login" ;
 	}
 
 }

@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import njust.dao.BaseDao;
 import njust.model.Right;
 import njust.service.RightService;
+import njust.utils.DataUtil;
 import njust.utils.StringUtil;
 import njust.utils.ValidateUtil;
 
@@ -89,11 +90,11 @@ public class RightServiceImpl extends  BaseServiceImp<Right> implements RightSer
 
 	@Override
 	public void batchUpdateRights(List<Right> allRights) {
-		String hql="update Right r set r.rightName = ? where r.id = ?";
+		String hql="update Right r set r.rightName = ? ,r.common=? where r.id = ?";
 		if(ValidateUtil.isValid(allRights))
 		{
 			for(Right right:allRights)
-				this.batchEntityByHql(hql, right.getRightName(),right.getId());
+				this.batchEntityByHql(hql, right.getRightName(),right.isCommon(),right.getId());
 		}
 		
 	}
@@ -113,15 +114,14 @@ public class RightServiceImpl extends  BaseServiceImp<Right> implements RightSer
 			return this.findAllEntities();
 		else
 		{
-			String hql="from Right r where r.id not in ("+extractRightIds(rights) +")";
+			String hql="from Right r where r.id not in ("+DataUtil.extractRightIds(rights) +")";
 			return this.findEntityByHQL(hql);
 		}
 	}
-	private String extractRightIds(Set<Right> rights)
-	{
-		StringBuffer sb=new StringBuffer();
-		for(Right r:rights)
-			sb.append(r.getId()).append(",");
-		return sb.substring(0,sb.length()-1).toString();
+	@Override
+	public int getMaxRightPos() {
+		String hql="select max(r.rightPos) from Right r";
+		Integer pos=(Integer) this.uniqueResult(hql);
+		return pos==null?0:pos;
 	}
 }

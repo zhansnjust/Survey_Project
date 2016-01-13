@@ -1,5 +1,6 @@
 package njust.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -8,11 +9,15 @@ import org.springframework.stereotype.Service;
 
 import njust.dao.BaseDao;
 import njust.model.User;
+import njust.service.RoleService;
 import njust.service.UserService;
 import njust.utils.ValidateUtil;
+import njust.model.Role;
 
 @Service("userService")
 public class UserServiceImp extends BaseServiceImp<User> implements UserService {
+	@Resource
+	private RoleService roleService;
 	@Override
 	@Resource(name = "userDao")
 	public void setDao(BaseDao<User> dao) {
@@ -36,13 +41,18 @@ public class UserServiceImp extends BaseServiceImp<User> implements UserService 
 
 	@Override
 	public void clearAuthorize(Integer userId) {
-		// TODO Auto-generated method stub
-		
+		this.getEntity(userId).getRoles().clear();
 	}
 
 	@Override
 	public void updateAuthorize(User model, Integer[] ownRoleIds) {
-		// TODO Auto-generated method stub
-		
+		User user=this.getEntity(model.getId());
+		if(!ValidateUtil.isValid(ownRoleIds))
+			user.getRoles().clear();
+		else
+		{
+			List<Role> roles=roleService.findRolesInRange(ownRoleIds);
+			user.setRoles(new HashSet<Role>(roles));
+		}
 	}
 }

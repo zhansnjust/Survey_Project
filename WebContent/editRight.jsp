@@ -22,7 +22,7 @@
 								<table>
 									<tr>
 										<td class="tdFormLabel">权限名称:</td>
-										<td class="tdFormControl"><s:textfield name="rightName" cssClass="text"  /></td>
+										<td class="tdFormControl"><s:textfield name="rightName" cssClass="text" /></td>
 									</tr>
 									<tr>
 										<td class="tdFormLabel">权限URL</td>

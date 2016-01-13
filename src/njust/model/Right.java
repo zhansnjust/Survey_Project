@@ -2,13 +2,18 @@ package njust.model;
 
 /**
  */
-public class Right {
+public class Right extends BaseEntity{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3405859985647649718L;
 	private Integer id;
 	private String rightName = "";
 	private String rightUrl;
 	private String rightDesc;
 	private long rightCode;// 
 	private int rightPos; //
+	private boolean  common;//是否是公共资源
 
 	public Integer getId() {
 		return id;
@@ -57,4 +62,13 @@ public class Right {
 	public void setRightPos(int rightPos) {
 		this.rightPos = rightPos;
 	}
+
+	public boolean isCommon() {
+		return common;
+	}
+
+	public void setCommon(boolean common) {
+		this.common = common;
+	}
+	
 }

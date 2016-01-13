@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import njust.model.User;
+import njust.service.RightService;
 import njust.service.UserService;
 import njust.utils.DataUtil;
 
@@ -20,7 +21,8 @@ public class LoginAction extends BaseAction<User> implements SessionAware{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Map<String , Object>  session;
-	
+	@Resource
+	private RightService rightService;
 	@Resource
 	private UserService userService;
 	public String doLogin()
@@ -34,6 +36,11 @@ public class LoginAction extends BaseAction<User> implements SessionAware{
 			addActionError("email/password 错误");
 		else
 		{
+			//初始化权限总和数组
+			int maxPos=rightService.getMaxRightPos();
+			user.setRightSum(new long[maxPos+1]);
+			//计算权限总和
+			user.calulateRightSum();
 			session.put("user", user);
 		}
 	}

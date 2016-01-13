@@ -9,7 +9,7 @@ import njust.model.BaseEntity;
  */
 public class DataUtil {
 	/**
-	 * ʹ��md5�㷨���м��� 
+	 * ʹmd5加密
 	 */
 	public static String md5(String src){
 		try {

@@ -102,8 +102,8 @@
 								<s:checkbox name="allRights[%{#st.index}].common" />
 							</td>
 							<td style="text-align: left;"><s:property value="rightUrl" /></td>
-							<td style="color: gray;text-align: left;"><s:property value="rightPos" /></td>
-							<td style="color: gray;text-align: left;"><s:property value="rightCode" /></td>
+							<td style="color: gray;text-align: right;"><s:property value="rightPos" /></td>
+							<td style="color: gray;text-align: right;"><s:property value="rightCode" /></td>
 							<td><s:a action="RightAction_editRight?rightId=%{#rightId}" cssClass="aList">修改</s:a></td>
 							<td><s:a action="RightAction_deleteRight?rightId=%{#rightId}" cssClass="aList">删除</s:a></td>
 						</tr>
