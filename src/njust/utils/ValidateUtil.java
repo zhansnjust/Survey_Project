@@ -44,6 +44,7 @@ public class ValidateUtil {
 	/**
 	 * 判断是否有权限
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static boolean hasRight(String namespace,String actionName,HttpServletRequest req,BaseAction action){
 		if(!ValidateUtil.isValid(namespace)
 				|| "/".equals(namespace)){
